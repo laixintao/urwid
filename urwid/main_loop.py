@@ -1476,12 +1476,7 @@ class AsyncioEventLoop(EventLoop):
         Start the event loop.  Exit the loop when any callback raises
         an exception.  If ExitMainLoop is raised, exit cleanly.
         """
-        self._loop.set_exception_handler(self._exception_handler)
         self._loop.run_forever()
-        if self._exc_info:
-            exc_info = self._exc_info
-            self._exc_info = None
-            reraise(*exc_info)
 
 
 def _refl(name, rval=None, exit=False):
